@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>40 Ways to Explain One Thing</title>
+<!-- Adapted from Ashley Hi's DM3014 Week 3 hyperlink-poetry example. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+<style>
+body { margin:0; background:white; color:black; font:16px "Times New Roman",serif; min-width:1180px; min-height:800px; }
+h1 { position:absolute; left:60px; top:12px; margin:0; font:normal 20px "Times New Roman",serif; }
+a { white-space:nowrap; } a:focus-visible { outline:2px solid black; outline-offset:4px; }
+</style></head><body><h1>40 Ways to Explain One Thing</h1>
+<script>
+const links = [
+  {
+    "x": 60,
+    "y": 100,
+    "label": "What Even Is A Mole",
+    "url": "https://en.wikipedia.org/wiki/Mole_(unit)"
+  },
+  {
+    "x": 250,
+    "y": 100,
+    "label": "Is It The Animal",
+    "url": "https://en.wikipedia.org/wiki/Mole_(animal)"
+  },
+  {
+    "x": 420,
+    "y": 100,
+    "label": "My Teacher Said Just Memorise",
+    "url": "https://www.seab.gov.sg/files/O%20Lvl%20Syllabus%20Private%20Cddts/2026/6092_y26_sy.pdf"
+  },
+  {
+    "x": 700,
+    "y": 100,
+    "label": "Six Times Ten To The What",
+    "url": "https://en.wikipedia.org/wiki/Avogadro_constant"
+  },
+  {
+    "x": 920,
+    "y": 100,
+    "label": "Why Do We Even Need This",
+    "url": "https://www.chemguide.co.uk/"
+  },
+  {
+    "x": 100,
+    "y": 140,
+    "label": "I Copied The Formula",
+    "url": "https://www.chemist.sg/mole/formulae_for_mole_calcs.pdf"
+  },
+  {
+    "x": 320,
+    "y": 140,
+    "label": "But Which One Goes On Top",
+    "url": "https://www.reddit.com/r/chemhelp/"
+  },
+  {
+    "x": 600,
+    "y": 140,
+    "label": "I Got It Wrong Again",
+    "url": "https://www.youtube.com/watch?v=VzwEoEV2u0Y",
+    "w": 720,
+    "h": 520
+  },
+  {
+    "x": 850,
+    "y": 140,
+    "label": "Can You Just Show Me",
+    "url": "https://www.youtube.com/@TheOrganicChemistryTutor"
+  },
+  {
+    "x": 120,
+    "y": 190,
+    "label": "Like A Dozen?",
+    "url": "https://www.khanacademy.org/science/chemistry"
+  },
+  {
+    "x": 380,
+    "y": 190,
+    "label": "Ok But Eggs All Weigh The Same",
+    "url": "https://chemistry.stackexchange.com/"
+  },
+  {
+    "x": 700,
+    "y": 190,
+    "label": "So Why Grams",
+    "url": "https://en.wikipedia.org/wiki/Molar_mass"
+  },
+  {
+    "x": 200,
+    "y": 235,
+    "label": "Again",
+    "url": "https://www.youtube.com/watch?v=SRNMaqDpiNI",
+    "w": 720,
+    "h": 520
+  },
+  {
+    "x": 258,
+    "y": 258,
+    "label": "Again",
+    "url": "https://www.youtube.com/watch?v=E1y3vqdiVos",
+    "w": 720,
+    "h": 520
+  },
+  {
+    "x": 305,
+    "y": 280,
+    "label": "Again",
+    "url": "https://www.youtube.com/watch?v=n67RYI_0sc0",
+    "w": 720,
+    "h": 520
+  },
+  {
+    "x": 345,
+    "y": 302,
+    "label": "Again",
+    "url": "https://www.youtube.com/watch?v=VzwEoEV2u0Y",
+    "w": 720,
+    "h": 520
+  },
+  {
+    "x": 600,
+    "y": 240,
+    "label": "Draw It Instead",
+    "url": "https://phet.colorado.edu/"
+  },
+  {
+    "x": 790,
+    "y": 262,
+    "label": "The Triangle Thing",
+    "url": "https://www.nygh.sg/mole_concept/mole_concept.pdf"
+  },
+  {
+    "x": 930,
+    "y": 284,
+    "label": "He Memorised The Triangle",
+    "url": "https://www.youtube.com/watch?v=SRNMaqDpiNI",
+    "w": 720,
+    "h": 520
+  },
+  {
+    "x": 690,
+    "y": 306,
+    "label": "Now He Gets Full Marks",
+    "url": "https://www.youtube.com/watch?v=eQLxAGEV_6U",
+    "w": 720,
+    "h": 520
+  },
+  {
+    "x": 640,
+    "y": 330,
+    "label": "That's Not Understanding",
+    "url": "https://en.wikipedia.org/wiki/Rote_learning"
+  },
+  {
+    "x": 250,
+    "y": 380,
+    "label": "Try It From Ratios",
+    "url": "https://www.youtube.com/watch?v=n67RYI_0sc0",
+    "w": 720,
+    "h": 520
+  },
+  {
+    "x": 470,
+    "y": 380,
+    "label": "He's Actually Good At A-Math",
+    "url": "https://www.desmos.com/"
+  },
+  {
+    "x": 720,
+    "y": 380,
+    "label": "Same Thing, Different Subject",
+    "url": "https://www.youtube.com/watch?v=E1y3vqdiVos",
+    "w": 720,
+    "h": 520
+  },
+  {
+    "x": 380,
+    "y": 420,
+    "label": "Scale The Recipe",
+    "url": "https://www.nygh.sg/mole_concept/mole_concept.pdf#page=3"
+  },
+  {
+    "x": 590,
+    "y": 420,
+    "label": "Double Everything",
+    "url": "https://www.nygh.sg/mole_concept/mole_concept.pdf#page=17"
+  },
+  {
+    "x": 400,
+    "y": 470,
+    "label": "Almost",
+    "url": "https://www.youtube.com/watch?v=SRNMaqDpiNI",
+    "w": 720,
+    "h": 520
+  },
+  {
+    "x": 530,
+    "y": 470,
+    "label": "Almost",
+    "url": "https://gifrific.com/joey-tribbiani-saying-oh-my-god/"
+  },
+  {
+    "x": 465,
+    "y": 505,
+    "label": "Wait",
+    "url": "https://www.youtube.com/watch?v=E1y3vqdiVos",
+    "w": 720,
+    "h": 520
+  },
+  {
+    "x": 470,
+    "y": 550,
+    "label": "Oh",
+    "url": "https://gifrific.com/joey-tribbiani-saying-oh-my-god/"
+  },
+  {
+    "x": 485,
+    "y": 580,
+    "label": "Oh It's Just Counting",
+    "url": "https://en.wikipedia.org/wiki/Mole_(unit)"
+  },
+  {
+    "x": 480,
+    "y": 640,
+    "label": "He Got It",
+    "url": "https://www.youtube.com/watch?v=eQLxAGEV_6U",
+    "w": 720,
+    "h": 520
+  },
+  {
+    "x": 470,
+    "y": 700,
+    "label": "Next Week",
+    "url": "index.html",
+    "w": 500,
+    "h": 600
+  },
+  {
+    "x": 440,
+    "y": 730,
+    "label": "Different Student, Sec 2, Nothing Transfers",
+    "url": "index.html",
+    "w": 340,
+    "h": 420
+  },
+  {
+    "x": 90,
+    "y": 65,
+    "label": "Is This Going To Be Tested",
+    "url": "https://www.seab.gov.sg/files/O%20Lvl%20Syllabus%20Private%20Cddts/2026/6092_y26_sy.pdf"
+  },
+  {
+    "x": 760,
+    "y": 65,
+    "label": "Can We Start Again",
+    "url": "https://www.youtube.com/watch?v=VzwEoEV2u0Y"
+  },
+  {
+    "x": 170,
+    "y": 170,
+    "label": "I Used My Calculator",
+    "url": "https://www.desmos.com/scientific"
+  },
+  {
+    "x": 520,
+    "y": 170,
+    "label": "The Calculator Must Be Wrong",
+    "url": "https://www.youtube.com/watch?v=VzwEoEV2u0Y"
+  },
+  {
+    "x": 200,
+    "y": 350,
+    "label": "Different Words Please",
+    "url": "https://www.youtube.com/watch?v=E1y3vqdiVos"
+  },
+  {
+    "x": 600,
+    "y": 350,
+    "label": "So We Pivot",
+    "url": "https://www.youtube.com/watch?v=n67RYI_0sc0"
+  }
+];
+const defaultWidth = 500;
+const defaultHeight = 600;
+function setup() {
+  noCanvas();
+  for (const link of links) {
+    const a = createA(link.url, link.label, '_blank');
+    a.position(link.x, link.y);
+    a.attribute('rel', 'noopener noreferrer');
+    // A real href preserves keyboard access and normal open-in-new-tab behaviour.
+    a.elt.addEventListener('click', event => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      openPopup(link);
+    });
+  }
+}
+function openPopup(link) {
+  const w = link.w || defaultWidth;
+  const h = link.h || defaultHeight;
+  // Repetition stacks in one place, as in the lecturer's example.
+  const popup = window.open(link.url, '_blank',
+    `width=${w},height=${h},left=100,top=50,resizable=yes,scrollbars=yes`);
+  if (popup) popup.opener = null;
+  else window.location.assign(link.url);
+}
+</script></body></html>
